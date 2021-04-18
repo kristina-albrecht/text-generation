@@ -48,7 +48,6 @@ if __name__ == '__main__':
         print('Usage: python train.py <output_model_name>')
         sys.exit(1)
     model_name = sys.argv[1]
-    output_path = os.path.join('..', 'data', 'trained', model_name)
 
     with open('../data/preprocessed/features.pickle', 'rb') as features_pickle:
         features = pickle.load(features_pickle)
@@ -67,6 +66,6 @@ if __name__ == '__main__':
               'batch_size': train_params['batch_size'],
               'steps_per_epoch': train_params['steps_per_epoch'],
               'epochs': train_params['epochs']}
-    path_to_model = os.path.join('..', 'data', 'trained')
+    path_to_model = os.path.join('..', 'data', 'trained', model_name + '_' + str(params['epochs']) + '_' + str(params['steps_per_epoch']))
     path.create_if_not_exists(path_to_model)
     train(features, labels, params, path_to_model)
