@@ -6,7 +6,9 @@ train:
   batch_size: 1000
   loss: 'categorical_crossentropy'
   optimizer: 'adam'
-  steps_per_epoch: 100 # 3170
+  steps_per_epoch: 1000 # 3170
   epochs: 10 #50
 
+generate_text:
+  text_size: 100
 
