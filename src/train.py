@@ -38,7 +38,7 @@ def train(X, y, params, model_path):
     model = build_model(params['vocab_size'], params['feature_size'])
     batches = generate_batches(X, y, params['batch_size'], params['vocab_size'], params['feature_size'], params['corpus_size'])
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    model.fit(batches, steps_per_epoch=10, epochs=4, verbose=2, use_multiprocessing=True, workers=4)
+    model.fit(batches, steps_per_epoch=params['steps_per_epoch'], epochs=params['epochs'], verbose=2, use_multiprocessing=True, workers=4)
     save_model(model, model_path) # save_format: Either 'tf' or 'h5', defaults to 'tf'
 
 
