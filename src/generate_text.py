@@ -27,7 +27,7 @@ def generate_seq(model, tokenizer, seed_text, n_words, vocab_size, num_of_featur
         encoded = tokenizer.texts_to_sequences([in_text])[0]
         encoded = pad_sequences([encoded], maxlen=num_of_features, padding='pre')
 
-        probs = model.predict_proba(encoded)
+        probs = model.predict(encoded)
         yhat = random.choices(range(0, vocab_size), weights=probs[0], k=1)[0]
         out_word = ''
         for word, index in tokenizer.word_index.items():
